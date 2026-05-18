@@ -15,3 +15,7 @@ vim.keymap.set("i", "<C-v>", "<C-r>+", { desc = "Paste from clipboard", noremap 
 -- Delete without yanking
 vim.keymap.set("n", "d", '"_d', { desc = "Delete without yank", noremap = true, silent = true })
 vim.keymap.set("v", "d", '"_d', { desc = "Delete without yank", noremap = true, silent = true })
+
+-- Undo
+vim.keymap.set("n", "<C-z>", "u", { desc = "Undo", noremap = true, silent = true })
+vim.keymap.set("i", "<C-z>", "<C-o>u", { desc = "Undo", noremap = true, silent = true })
