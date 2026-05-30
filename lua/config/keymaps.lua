@@ -28,13 +28,13 @@ vim.keymap.set("i", "<C-s>", function()
 end, { desc = "Save and Format", noremap = true, silent = true })
 -- Compile and run C++
 vim.keymap.set("n", "<C-r>", function()
-  local file = vim.fn.expand("%")
-  local out = vim.fn.expand("%:r")
+  local file = vim.fn.expand("%:p")
+  local out = vim.fn.expand("%:p:r")
   -- close any existing terminal buffers first
   for _, buf in ipairs(vim.api.nvim_list_bufs()) do
     if vim.bo[buf].buftype == "terminal" then
       vim.api.nvim_buf_delete(buf, { force = true })
     end
   end
-  vim.cmd("split | terminal g++ " .. file .. " -o " .. out .. " && ./" .. out)
+  vim.cmd("split | terminal g++ " .. file .. " -o " .. out .. " && " .. out)
 end, { desc = "Compile and run C++" })
